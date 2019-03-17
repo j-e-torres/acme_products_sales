@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-webpack": "./node/modules/webpack/bin/webpack.js --watch --mode=development",
-    "start-server": "DATABASE_URL=postgres://localhost/acme-products-sales nodemon ./server/server.js --ignore client/ --ignore public/",
+    "start-webpack": "./node_modules/webpack/bin/webpack.js --watch --mode=development",
+    "start-server": "DATABASE_URL=postgres://localhost/acme_product_sales nodemon ./server/server.js --ignore client/ --ignore public/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "run start-webpack & start-server",
+    "start:dev": "npm run start-webpack & npm run start-server",
     "start": "node ./server/server.js"
   },
   "babel": {
@@ -23,10 +23,12 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
     "express": "^4.16.4",
     "pg": "^7.9.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^4.4.0",
     "sequelize": "^5.1.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
