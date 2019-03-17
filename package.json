@@ -1,0 +1,34 @@
+{
+  "name": "Project6-acme-products-sales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-webpack": "./node/modules/webpack/bin/webpack.js --watch --mode=development",
+    "start-server": "DATABASE_URL=postgres://localhost/acme-products-sales nodemon ./server/server.js --ignore client/ --ignore public/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "run start-webpack & start-server",
+    "start": "node ./server/server.js"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "express": "^4.16.4",
+    "pg": "^7.9.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "sequelize": "^5.1.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
