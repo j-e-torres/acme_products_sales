@@ -15,4 +15,12 @@ app.get('/api/products', (req, res, next) => {
         .catch(next);
 })
 
+app.delete('/api/products/:id', (req, res, next) => {
+    Product.destroy({
+        where: { id: req.params.id}
+    })
+        .then(() => res.sendStatus(204))
+        .catch(next);
+})
+
 module.exports = app;
