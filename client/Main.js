@@ -3,6 +3,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import List from './list';
+import CreateProduct from './CreateProduct'
 import Navbar from './Navbar';
 
 class Main extends Component {
@@ -11,7 +12,8 @@ class Main extends Component {
         this.state = {
             products: []
         }
-        this.deleteProduct = this.deleteProduct.bind(this)
+        this.deleteProduct = this.deleteProduct.bind(this);
+        // this.onSave = this.onSave.bind(this);
 
     }
 
@@ -26,6 +28,11 @@ class Main extends Component {
             .then( () => this.loadData())
     }
 
+    // onSave() {
+    //     axios.post('/api/products')
+    //         .then( () => this.loadData())
+    // }
+
     componentDidMount() {
         this.loadData()
     }
@@ -33,6 +40,7 @@ class Main extends Component {
     render() {
         const { products } = this.state;
         const productSales = products.filter( product => product.discountPercent > 0);
+        const { deleteProduct } = this
 
         const counts = {
             '/products': products.length,
@@ -44,9 +52,11 @@ class Main extends Component {
                 <h1>Acme Products/Sales</h1>
                 <Route render={ ({ location }) => <Navbar counts={counts} location={location} />} />
                 <Route exact path="/" render={() => <h2>Welcome!!</h2>} />
-                <Route exact path="/products" render={() => <List products={products} deleteProduct={this.deleteProduct} />} />
-                <Route exact path="/products/sales/" render={() => <List products={productSales} deleteProduct={this.deleteProduct} />} />
+                <Route exact path="/products" render={() => <List products={products} deleteProduct={deleteProduct} />} />
+                <Route exact path="/products/sales/" render={() => <List products={productSales} deleteProduct={deleteProduct} />} />
+                <Route exact path="/products/create" render={( {history} ) => <CreateProduct history={history} /> } />
 
+                {/* <Route exact path="/products/create" component={CreateProduct} /> */}
             </HashRouter>
         )
     }

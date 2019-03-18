@@ -17,7 +17,7 @@ export default ({ location: {pathname}, counts }) => {
         },
         {
             title: 'Create',
-            path: '/create'
+            path: '/products/create'
         }
     ];
 

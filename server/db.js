@@ -16,7 +16,7 @@ const Product = db.define('product', {
     discountPercent: {
         type: Sequelize.FLOAT,
         validate: {
-            max: 1,
+            max: 100,
             min: 0
         },
     },
@@ -29,7 +29,7 @@ const productsArr = [
     {
         name: 'Foo',
         price: 3,
-        discountPercent: 0.2,
+        discountPercent: 20,
         availability: 'instock'
     },
     {
