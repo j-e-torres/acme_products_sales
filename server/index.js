@@ -31,4 +31,9 @@ app.delete('/api/products/:id', (req, res, next) => {
         .catch(next);
 })
 
+//error handling
+app.use((err, req, res, next) => {
+    console.error(err.message)
+    res.status(err.status || 500).send(err.message || 'Internal server error.')
+})
 module.exports = app;

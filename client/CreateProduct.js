@@ -33,7 +33,10 @@ class CreateProduct extends Component {
             .then((product) => {
                 product.discountPercent ? push('/products/sales') : push('/products')
             })
-            .catch(err => this.setState({ err: err.message }));
+            .catch(err => {
+                console.log('here is err', err)
+                this.setState({ err: 'Your discount or availability is wrong' })
+            });
 
     }
 
