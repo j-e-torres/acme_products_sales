@@ -4,6 +4,8 @@ const path = require('path');
 const { Product } = require('./db')
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'client/index.html'))
@@ -13,6 +15,12 @@ app.get('/api/products', (req, res, next) => {
     Product.findAll()
         .then((data) => res.send(data))
         .catch(next);
+})
+
+app.post('/api/products', (req, res, next) => {
+    Product.create(req.body)
+        .then(product => res.send(product))
+        .catch(next)
 })
 
 app.delete('/api/products/:id', (req, res, next) => {

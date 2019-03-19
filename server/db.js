@@ -11,17 +11,26 @@ const Product = db.define('product', {
         unique: true,
     },
     price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
     },
     discountPercent: {
         type: Sequelize.FLOAT,
         validate: {
-            max: 100,
-            min: 0
+            isInRange: function(value) {
+                if ( value < 0 || value > 100) {
+                    throw new Error('Discount must be between 0 and 100')
+                }
+            }
         },
     },
     availability: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            isIn: {
+                args: [['instock', 'discontinued', 'backordered']],
+                msg: 'Availability status to be instock, discontinued or backordered'
+              }
+        }
     }
 })
 
