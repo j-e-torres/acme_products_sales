@@ -62,8 +62,13 @@ class CreateProduct extends Component {
           <input className="form-control" name="discountPercent" type="text" onChange={handleChange} />
 
           <label htmlFor="availability"> Availability </label>
-          <input className="form-control" name="availability" type="text" onChange={handleChange} />
+          {/* <input className="form-control" name="availability" type="text" onChange={handleChange} /> */}
 
+            <select className="form-control" name="availability" type="text" onChange={handleChange}>
+                <option>instock</option>
+                <option>discontinued</option>
+                <option>backordered</option>
+            </select>
           <button disabled={!isEnabled} type="submit" className="btn btn-primary" style={{ marginTop: '10px' }}>Create</button>
 
         </form>
